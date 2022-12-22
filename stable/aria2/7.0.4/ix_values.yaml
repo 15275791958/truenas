@@ -15,7 +15,7 @@ service:
     ports:
       main:
         port: 6800
-        targetPort: 6800
+        targetPort: 80
   listen:
     enabled: true
     ports:
