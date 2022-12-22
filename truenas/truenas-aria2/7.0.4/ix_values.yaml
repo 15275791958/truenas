@@ -1,0 +1,43 @@
+image:
+  repository: fanningert/aria2-with-webui
+  tag: latest@sha256:7fd98bd197c04a3e7a47071a83633fdf4dcc46a6e1d1cef1600ba1566d641727
+  pullPolicy: IfNotPresent
+
+secretEnv:
+  RPC_SECRET: "ChangemeNow"
+
+env:
+  RPC_PORT: 6800
+  # LISTEN_PORT: 6888
+
+service:
+  main:
+    ports:
+      main:
+        port: 6800
+        targetPort: 80
+  listen:
+    enabled: true
+    ports:
+      listen:
+        enabled: true
+        port: 6888
+        targetPort: 6888
+
+securityContext:
+  readOnlyRootFilesystem: false
+  runAsNonRoot: false
+
+podSecurityContext:
+  runAsUser: 0
+  runAsGroup: 0
+
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+  varrun:
+    enabled: true
+
+portal:
+  enabled: true
