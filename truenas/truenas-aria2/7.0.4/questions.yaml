@@ -1,14 +1,14 @@
 groups:
-  - name: Container Image
-    description: Image to be used for container
-  - name: General Settings
-    description: General Deployment Settings
-  - name: App Configuration
-    description: App Specific Config Options
-  - name: Networking and Services
-    description: Configure Network and Services for Container
-  - name: Storage and Persistence
-    description: Persist and Share Data that is Separate from the Container
+  - name: 容器图像
+    description: 用于容器的图像
+  - name: 常规设置
+    description: 常规部署设置
+  - name: 应用程序配置
+    description: 应用程序特定配置选项
+  - name: 网络和服务
+    description: 为容器配置网络和服务
+  - name: 存储和持久性
+    description: 持久化和共享与容器分离的数据
   - name: Ingress
     description: Ingress Configuration
   - name: Security and Permissions
