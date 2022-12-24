@@ -48,7 +48,8 @@ service:
  env:
   PUID: "1000"
   UGID: "1000"
-  NVIDIA_VISIBLE_DEVICES: "NVIDIA_VISIBLE_DEVICES"
+  NVIDIA_VISIBLE_DEVICES: "GPU-f5080da3-0369-5cfa-bbdd-55a2759fe3a5"
+  
 
 persistence:
   config:
@@ -57,7 +58,6 @@ persistence:
   cache:
     enabled: true
     mountPath: "/data/movies"
-    type: "emptyDir"
 
 portal:
   enabled: true
