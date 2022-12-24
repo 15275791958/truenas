@@ -1,0 +1,63 @@
+image:
+  repository: linuxserver/jellyfin
+  pullPolicy: IfNotPresent
+  tag: 10.8.8@sha256:38b31db4e1dda6c9619330f4e0c80f2867a011b79b5eee08f116cc3d7546ec98
+
+extraArgs:
+  - run
+  - --runtime
+  - "{{ .Values.cloudflared.token }}"
+
+cloudflared:
+  token: "nvidia"
+securityContext:
+  readOnlyRootFilesystem: false
+
+env:
+  JELLYFIN_PublishedServerUrl: "https://jelly.mydomain.com"
+
+service:
+  main:
+    ports:
+      main:
+        port: 10400
+        protocol: HTTP
+        targetPort: 8096
+  listen:
+    enabled: true
+    ports:
+      listen:
+        enabled: true
+        port: 10401
+        protocol: HTTPS
+        targetPort: 8920
+  udp:
+    enabled: true
+    ports:
+      udp:
+        enabled: true
+        port: 10402
+        targetPort: 7359
+  udp:
+    enabled: true
+    ports:
+      udp:
+        enabled: true
+        port: 10403
+        targetPort: 1900
+ env:
+  PUID: "1000"
+  UGID: "1000"
+  NVIDIA_VISIBLE_DEVICES: "NVIDIA_VISIBLE_DEVICES"
+
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+  cache:
+    enabled: true
+    mountPath: "/data/movies"
+    type: "emptyDir"
+
+portal:
+  enabled: true
